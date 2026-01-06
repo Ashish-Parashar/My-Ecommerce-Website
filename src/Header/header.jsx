@@ -100,36 +100,13 @@ function Header({ setrole }) {
               </div>
             }  */}
 
-            {user ?
-             <Link
-              onClick={() => {
-                setshowcart(true)
-              }}
-              className="relative  md:hidden flex flex-col items-center justify-center text-black transition-colors duration-300"
-            >
-              {/* Cart Icon (optional) */}
-              <div className="relative">
-                <FaCartArrowDown
-                  className='text-[32px]'
-                />
-                {/* Quantity Badge */}
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
-                  {totalQuantity}
-                </span>
-              </div>
-
-              {/* Total */}
-              <p className="text-xs sm:text-sm font-semibold text-gray-700 mt-0.5">
-                ₹{total}
-              </p>
-            </Link> : ''
-
-            }
+           
+           
 
            
             
           </div>
-          <div className='block md:hidden absolute top-0 transition-all duration-1000 ease-in-out  w-[100%] h-[300px] bg-black'
+          <div className='block md:hidden absolute top-0 transition-all z-10 duration-1000 ease-in-out  w-[100%] h-[800px] bg-black'
             style={{ left: showMenu ? '0' : '-100%' }}
           >
             <div className="flex flex-col mt-6 ml-4 gap-4 ">
@@ -168,9 +145,9 @@ function Header({ setrole }) {
               }
 
               {user ? <Link
-                to="/signup"
+                to="/login"
                 onClick={() => {
-                  Logout
+                  Logout()
                   setshowMenu(false)
                 }}
                 className="text-white text-lg font-medium hover:text-yellow-300 transition-colors duration-300"
@@ -203,7 +180,7 @@ function Header({ setrole }) {
               onClick={() => {
                 setshowcart(true)
               }}
-              className="relative flex flex-col items-center justify-center text-black transition-colors duration-300"
+              className="relative extra2 flex flex-col items-center justify-center text-black transition-colors duration-300"
             >
               {/* Cart Icon (optional) */}
               <div className="relative">
@@ -223,25 +200,8 @@ function Header({ setrole }) {
             </Link> : ''
 
             }
-          <Link
-            onClick={() => {
-              setshowcart(true)
-            }}
-            className="  md:hidden relative flex flex-col items-center justify-center text-black transition-colors duration-300"
-          >
-            <div className="relative">
-              <FaCartArrowDown
-                className='text-[32px]'
-              />
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
-                {totalQuantity}
-              </span>
-            </div>
+         
 
-            <p className="text-xs sm:text-sm font-semibold text-gray-700 mt-0.5">
-              ₹{total}
-            </p>
-          </Link>
           {!showMenu ?
             < FiMenu className='block md:hidden font-bold text-[28px]'
               onClick={() => {

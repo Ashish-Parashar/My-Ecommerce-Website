@@ -66,7 +66,7 @@ function Userdashboard() {
                 {banners.map((img, index) => (
                     <SwiperSlide key={index}>
                         <div
-                            className="relative w-full h-[350px] md:h-[500px] bg-cover bg-center flex items-center justify-center text-center text-white"
+                            className="relative w-full h-[350px]  md:h-[500px] bg-cover bg-center flex items-center justify-center text-center text-white"
                             style={{ backgroundImage: `url(${img})` }}
                         >
                             {/* Dark overlay for better text contrast */}
