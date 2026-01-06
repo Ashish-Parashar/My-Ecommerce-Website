@@ -30,7 +30,6 @@ function CartPage() {
             🛒 Your Cart ({cartItems.length} {cartItems.length === 1 ? "item" : "items"})
           </h2>
 
-          {/* Headings */}
           <div className="hidden sm:grid sm:grid-cols-4 text-gray-600 font-semibold border-b pb-2 mb-3 text-sm sm:text-base">
             <p className="text-left">Item</p>
             <p className="text-center">Price</p>
@@ -38,7 +37,6 @@ function CartPage() {
             <p className="text-right">Total</p>
           </div>
 
-          {/* Cart Items */}
           <div className="space-y-3">
             {cartItems.map((item) => (
               <div
