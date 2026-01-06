@@ -203,22 +203,43 @@ function Header({ setrole }) {
               }}
               className="relative flex flex-col items-center justify-center text-black transition-colors duration-300"
             >
+              {/* Cart Icon (optional) */}
               <div className="relative">
                 <FaCartArrowDown
                   className='text-[32px]'
                 />
+                {/* Quantity Badge */}
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
                   {totalQuantity}
                 </span>
               </div>
 
+              {/* Total */}
               <p className="text-xs sm:text-sm font-semibold text-gray-700 mt-0.5">
                 ₹{total}
               </p>
             </Link> : ''
 
             }
-          
+          <Link
+            onClick={() => {
+              setshowcart(true)
+            }}
+            className="  md:hidden relative flex flex-col items-center justify-center text-black transition-colors duration-300"
+          >
+            <div className="relative">
+              <FaCartArrowDown
+                className='text-[32px]'
+              />
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+                {totalQuantity}
+              </span>
+            </div>
+
+            <p className="text-xs sm:text-sm font-semibold text-gray-700 mt-0.5">
+              ₹{total}
+            </p>
+          </Link>
           {!showMenu ?
             < FiMenu className='block md:hidden font-bold text-[28px]'
               onClick={() => {
