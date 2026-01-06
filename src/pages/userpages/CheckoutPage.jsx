@@ -15,6 +15,8 @@ const CheckoutPage = () => {
         dispatch(totalAmount());
     }, [cartItems, dispatch]);
 
+    
+
     return (
         <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -67,7 +69,6 @@ const CheckoutPage = () => {
                         <h2 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">
                             Order Summary
                         </h2>
-
                         <div className="space-y-4 max-h-[300px] overflow-y-auto pr-2">
                             {cartItems.map((item) => (
                                 <div
@@ -75,18 +76,18 @@ const CheckoutPage = () => {
                                     className="flex items-center justify-between border-b pb-2"
                                 >
                                     <div className="flex items-center gap-3">
-                                         <Link to={`/product/${item._id}`} >
-                                        <img
-                                            src={`http://localhost:5000${item.image}`}
-                                            alt={item.title}
-                                            className="w-14 h-14 object-cover rounded-md border"
-                                        />
+                                        <Link to={`/product/${item._id}`} >
+                                            <img
+                                                src={`https://backend-jvcj.onrender.com${item.image}`}
+                                                alt={item.title}
+                                                className="w-14 h-14 object-cover rounded-md border"
+                                            />
                                         </Link>
                                         <div>
-                                             <Link to={`/product/${item._id}`} >
-                                            <h3 className="text-sm font-medium text-gray-800">
-                                                {item.title}
-                                            </h3>
+                                            <Link to={`/product/${item._id}`} >
+                                                <h3 className="text-sm font-medium text-gray-800">
+                                                    {item.title}
+                                                </h3>
                                             </Link>
                                             <p className="text-xs text-gray-500">
                                                 Qty: {item.quantity}

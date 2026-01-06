@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Addcategory from './addcategory';
 
+
 function ProductCategory() {
     const [category, setCategory] = useState([]);
     const [newName, setNewName] = useState('');
     const [editCategory, setEditCategory] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
-    const [currentPage, setcurrentPage] = useState(1)
+    const [currentPage, setcurrentPage] = useState(1);
     const [totalcategory] = useState(10);
-    const [showConfirm, setshowConfirm] = useState(false)
+    const [showConfirm, setshowConfirm] = useState(false);
 
 
-    const ProductsUrl = 'http://localhost:5000/api/categories';
+    const ProductsUrl = 'https://backend-jvcj.onrender.com/api/categories';
 
 
     const getData = async () => {

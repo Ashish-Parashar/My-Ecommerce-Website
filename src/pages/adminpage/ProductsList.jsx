@@ -14,7 +14,7 @@ function ProductsList() {
     const [Productcategory, setProductcategory] = useState('All')
 
 
-    const ProductsUrl = 'http://localhost:5000/api/products';
+    const ProductsUrl = 'https://backend-jvcj.onrender.com/api/products';
     const token = localStorage.getItem('token');
 
     const getData = async () => {
@@ -144,7 +144,7 @@ function ProductsList() {
                                 <td className="py-2 px-4 border-b">
                                     <img
                                         className='w-[50px] h-[50px]'
-                                        src={`http://localhost:5000${product.image}`} alt="" />
+                                        src={`https://backend-jvcj.onrender.com${product.image}`} alt="" />
                                 </td>
                                 <td className="py-2 text-[14px]  text-wrap px-4 border-b ">{EditProduct === product._id ?
                                     <input type="text"

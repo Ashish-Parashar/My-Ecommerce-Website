@@ -9,10 +9,11 @@ function Addcategory() {
     const [showform, setshowform] = useState(false)
     const [category, setcategory] = useState([])
 
+    const base_url = 'https://backend-jvcj.onrender.com/api/categories'
 
     const getData = async () => {
         try {
-            const res = await fetch('http://localhost:5000/api/categories');
+            const res = await fetch(base_url);
             const result = await res.json();
             setcategory(result)
         }
@@ -36,7 +37,7 @@ function Addcategory() {
         }
         else {
             try {
-                const res = await fetch("http://localhost:5000/api/categories", {
+                const res = await fetch(base_url, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

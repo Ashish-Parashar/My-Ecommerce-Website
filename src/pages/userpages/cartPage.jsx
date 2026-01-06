@@ -51,7 +51,7 @@ function CartPage() {
                     <div className="flex items-center gap-3">
                       <Link to={`/product/${item._id}`}>
                         <img
-                          src={`http://localhost:5000${item.image}`}
+                          src={`https://backend-jvcj.onrender.com${item.image}`}
                           alt={item.title}
                           className="w-[80px] h-[80px] object-contain rounded-md border border-gray-200 flex-shrink-0"
                         />
@@ -95,7 +95,7 @@ function CartPage() {
                   <div className="flex  gap-2">
                     <Link to={`/product/${item._id}`} >
                       <img
-                        src={`http://localhost:5000${item.image}`}
+                        src={`https://backend-jvcj.onrender.com${item.image}`}
                         alt={item.title}
                         className="w-[100px] h-16 sm:w-20 sm:h-20 object-cover rounded-md border"
                       />

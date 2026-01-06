@@ -15,8 +15,8 @@ function Addproducts() {
   const [showform, setshowform] = useState(false);
   const token = localStorage.getItem('token');
 
-  const ProductsUrl = 'http://localhost:5000/api/products';
-  const categoryUrl = 'http://localhost:5000/api/categories';
+  const ProductsUrl = 'https://backend-jvcj.onrender.com/api/products';
+  const categoryUrl = 'https://backend-jvcj.onrender.com/api/categories';
 
   const getCategory = async () => {
     try {
@@ -160,7 +160,6 @@ function Addproducts() {
                 ></textarea>
               </div>
 
-              {/* ✅ About field */}
               <div className="w-full sm:col-span-2">
                 <label className="block text-gray-700 font-medium mb-2">About this item</label>
                 <textarea
@@ -192,7 +191,6 @@ function Addproducts() {
                 />
               </div>
 
-              {/* ✅ Gallery upload */}
               <div className="w-full sm:col-span-2">
                 <label className="block text-gray-700 font-medium mb-2">Gallery Images</label>
                 <input

@@ -11,7 +11,7 @@ function SingleProduct() {
     const [mainImage, setMainImage] = useState('');
     const [showViewCart, setshowViewCart] = useState(null)
     const dispatch = useDispatch();
-    const ProductsUrl = 'http://localhost:5000/api/products';
+    const ProductsUrl = 'https://backend-jvcj.onrender.com/api/products';
 
     const getData = async () => {
         try {
@@ -19,7 +19,7 @@ function SingleProduct() {
             const result = await res.json();
             const found = result.find((item) => item._id === id);
             setProduct(found);
-            if (found?.image) setMainImage(`http://localhost:5000${found.image}`);
+            if (found?.image) setMainImage(`https://backend-jvcj.onrender.com${found.image}`);
         } catch (error) {
             console.error(error);
             alert('Something went wrong!');
@@ -74,11 +74,11 @@ function SingleProduct() {
 
                     <div className='flex gap-2 mt-3'>
                         <img
-                            src={`http://localhost:5000${product.image}`}
+                            src={`https://backend-jvcj.onrender.com${product.image}`}
                             onClick={() =>
-                                setMainImage(`http://localhost:5000${product.image}`)
+                                setMainImage(`https://backend-jvcj.onrender.com${product.image}`)
                             }
-                            className={`w-16 h-16 object-cover rounded-lg cursor-pointer border-2 transition-all duration-200 ${mainImage === `http://localhost:5000${product.image}`
+                            className={`w-16 h-16 object-cover rounded-lg cursor-pointer border-2 transition-all duration-200 ${mainImage === `https://backend-jvcj.onrender.com${product.image}`
                                 ? 'border-blue-500 scale-105'
                                 : 'border-transparent hover:scale-105 hover:border-gray-300'
                                 }`}
@@ -89,12 +89,12 @@ function SingleProduct() {
                                 {product.gallery.map((image, index) => (
                                     <img
                                         key={index}
-                                        src={`http://localhost:5000${image}`}
+                                        src={`https://backend-jvcj.onrender.com${image}`}
                                         alt={`Gallery ${index}`}
                                         onClick={() =>
-                                            setMainImage(`http://localhost:5000${image}`)
+                                            setMainImage(`https://backend-jvcj.onrender.com${image}`)
                                         }
-                                        className={`w-16 h-16 object-cover rounded-lg cursor-pointer border-2 transition-all duration-200 ${mainImage === `http://localhost:5000${image}`
+                                        className={`w-16 h-16 object-cover rounded-lg cursor-pointer border-2 transition-all duration-200 ${mainImage === `https://backend-jvcj.onrender.com${image}`
                                             ? 'border-blue-500 scale-105'
                                             : 'border-transparent hover:scale-105 hover:border-gray-300'
                                             }`}

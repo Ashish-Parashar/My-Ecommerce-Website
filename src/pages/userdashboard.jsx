@@ -15,7 +15,7 @@ import banner3 from '../assets/still-life-with-classic-shirts_23-2150828634.jpg'
 
 function Userdashboard() {
     const [products, setproduct] = useState([])
-    const ProductsUrl = 'http://localhost:5000/api/products';
+    const ProductsUrl = 'https://backend-jvcj.onrender.com/api/products';
 
     const dispatch = useDispatch()
 
@@ -104,7 +104,7 @@ function Userdashboard() {
                                     <div className='p-2 bg-gray-300'>
                                         <Link to={`/product/${product._id}`} >
                                             <img
-                                                src={`http://localhost:5000${product.image}`}
+                                                src={`https://backend-jvcj.onrender.com${product.image}`}
                                                 alt={product.title}
                                                 className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                                             />

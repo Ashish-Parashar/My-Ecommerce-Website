@@ -8,7 +8,7 @@ function Signup({ setrole }) {
 
     const navigate = useNavigate();
 
-    const API_BASE = "http://localhost:5000/api";
+    const API_BASE = "https://backend-jvcj.onrender.com/api";
 
 
     const collectData = async () => {
