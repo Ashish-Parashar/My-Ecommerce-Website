@@ -105,7 +105,7 @@ function Header({ setrole }) {
               onClick={() => {
                 setshowcart(true)
               }}
-              className="relative flex flex-col items-center justify-center text-black transition-colors duration-300"
+              className="relative  md:hidden flex flex-col items-center justify-center text-black transition-colors duration-300"
             >
               {/* Cart Icon (optional) */}
               <div className="relative">
@@ -125,6 +125,8 @@ function Header({ setrole }) {
             </Link> : ''
 
             }
+
+           
             
           </div>
           <div className='block md:hidden absolute top-0 transition-all duration-1000 ease-in-out  w-[100%] h-[300px] bg-black'
