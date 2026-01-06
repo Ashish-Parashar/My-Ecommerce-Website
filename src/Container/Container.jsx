@@ -39,9 +39,9 @@ function Container() {
         <Route path="/productcategory" element={role === 'admin' ? <ProductCategory /> : <Navigate to="/" replace />} />
         <Route path="/productslist" element={role === 'admin' ? <ProductsList /> : <Navigate to="/" replace />} />
         <Route path="/addcategory" element={role === 'admin' ? <Addcategory /> : <Navigate to="/" replace />} />
-        <Route path="product/:id" element={<SingleProduct />} />
-        <Route path="cart" element={<CartPage />} />
-        <Route path="checkout" element={<CheckoutPage />} />
+        <Route path="product/:id" element={ role ?   <SingleProduct /> : <Login setrole={setRole} />} />
+        <Route path="cart" element={ role ? <CartPage /> : <Login setrole={setRole} />} />
+        <Route path="checkout" element={ role ? <CheckoutPage /> : <Login setrole={setRole} />} />
       </Routes>
     </>
   );
