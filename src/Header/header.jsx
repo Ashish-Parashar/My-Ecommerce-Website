@@ -99,7 +99,9 @@ function Header({ setrole }) {
                 </Link>
               </div>
             }  */}
-            <Link
+
+            {user ?
+             <Link
               onClick={() => {
                 setshowcart(true)
               }}
@@ -120,7 +122,10 @@ function Header({ setrole }) {
               <p className="text-xs sm:text-sm font-semibold text-gray-700 mt-0.5">
                 ₹{total}
               </p>
-            </Link>
+            </Link> : ''
+
+            }
+            
           </div>
           <div className='block md:hidden absolute top-0 transition-all duration-1000 ease-in-out  w-[100%] h-[300px] bg-black'
             style={{ left: showMenu ? '0' : '-100%' }}
@@ -241,7 +246,7 @@ function Header({ setrole }) {
                   <div className="flex items-center gap-3">
                     <Link to={`/product/${item._id}`} >
                     <img
-                      src={`http://localhost:5000${item.image}`}
+                      src={`https://backend-jvcj.onrender.com${item.image}`}
                       alt={item.title}
                       className="w-14 h-14 object-cover rounded-md border"
                     />
