@@ -39,13 +39,15 @@ function SingleProduct() {
 
     return (
         <div className="flex justify-center flex-col bg-gray-100  relative  w-[100%] min-h-screen">
-            <div
+          
+          {/* add to cart poup */}
+            {/* <div
                 className={` flex px-10 absolute top-5 right-5 w-[100%]  z-20 transition-all duration-300 
         ${showViewCart ? "flex translate-y-0" : "hidden -translate-y-5 pointer-events-none"}`}
             >
                 <div className="bg-white shadow-xl flex  flex-wrap justify-between items-center  border rounded-xl p-4 w-[100%]">
                     <p className="font-semibold text-gray-800">
-                        ✅  {product.title} added to cart!
+                          {product.title} added to cart!
                     </p>
                     <Link
                         to="/cart"
@@ -58,9 +60,8 @@ function SingleProduct() {
                         View Cart
                     </Link>
                 </div>
-            </div>
+            </div> */}
             <div className="flex flex-col md:flex-row  rounded-2xl overflow-hidden w-full ">
-                {/* Left: Image Section */}
                 <div className="md:w-1/2 flex flex-col items-center justify-start  p-6">
                     <div className="w-full max-w-md bg-white rounded-lg overflow-hidden flex items-center justify-center border">
                         <img
@@ -70,7 +71,6 @@ function SingleProduct() {
                         />
                     </div>
 
-                    {/* Gallery Thumbnails */}
 
                     <div className='flex gap-2 mt-3'>
                         <img
@@ -105,7 +105,6 @@ function SingleProduct() {
                     </div>
                 </div>
 
-                {/* Right: Details Section */}
                 <div className="md:w-1/2 flex flex-col justify-between p-8">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-800 mb-1">

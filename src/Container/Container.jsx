@@ -27,22 +27,24 @@ function Container() {
   return (
     <>
       <Header setrole={setRole} />
-      <Routes>
-        <Route path="/" element={role ? <Userdashboard /> : <Login setrole={setRole} />} />
-        <Route path="/products" element={<h1>Products</h1>} />
-        <Route path="/addproducts" element={role === 'admin' ? <Addproducts /> : <Navigate to="/" replace />} />
-        <Route path="/login" element={role ? <Navigate to="/" replace /> : <Login setrole={setRole} />} />
-        <Route path="/signup" element={role ? <Navigate to="/" replace /> : <Signup setrole={setRole} />} />
-        <Route path="/profile" element={<h1>Profile</h1>} />
-        <Route path="/admindhaboard" element={role === 'admin' ? <Admindashboard /> : <Navigate to="/" replace />} />
-        <Route path="/*" element={<h1>Page Not Found</h1>} />
-        <Route path="/productcategory" element={role === 'admin' ? <ProductCategory /> : <Navigate to="/" replace />} />
-        <Route path="/productslist" element={role === 'admin' ? <ProductsList /> : <Navigate to="/" replace />} />
-        <Route path="/addcategory" element={role === 'admin' ? <Addcategory /> : <Navigate to="/" replace />} />
-        <Route path="product/:id" element={ role ?   <SingleProduct /> : <Login setrole={setRole} />} />
-        <Route path="cart" element={ role ? <CartPage /> : <Login setrole={setRole} />} />
-        <Route path="checkout" element={ role ? <CheckoutPage /> : <Login setrole={setRole} />} />
-      </Routes>
+        <main className="pt-[80px]">
+        <Routes>
+          <Route path="/" element={role ? <Userdashboard /> : <Login setrole={setRole} />} />
+          <Route path="/products" element={<h1>Products</h1>} />
+          <Route path="/addproducts" element={role === 'admin' ? <Addproducts /> : <Navigate to="/" replace />} />
+          <Route path="/login" element={role ? <Navigate to="/" replace /> : <Login setrole={setRole} />} />
+          <Route path="/signup" element={role ? <Navigate to="/" replace /> : <Signup setrole={setRole} />} />
+          <Route path="/profile" element={<h1>Profile</h1>} />
+          <Route path="/admindhaboard" element={role === 'admin' ? <Admindashboard /> : <Navigate to="/" replace />} />
+          <Route path="/productcategory" element={role === 'admin' ? <ProductCategory /> : <Navigate to="/" replace />} />
+          <Route path="/productslist" element={role === 'admin' ? <ProductsList /> : <Navigate to="/" replace />} />
+          <Route path="/addcategory" element={role === 'admin' ? <Addcategory /> : <Navigate to="/" replace />} />
+          <Route path="product/:id" element={role ? <SingleProduct /> : <Login setrole={setRole} />} />
+          <Route path="cart" element={role ? <CartPage /> : <Login setrole={setRole} />} />
+          <Route path="checkout" element={role ? <CheckoutPage /> : <Login setrole={setRole} />} />
+          <Route path="/*" element={<h1>Page Not Found</h1>} />
+        </Routes>
+      </main>
     </>
   );
 }

@@ -48,7 +48,7 @@ function Header({ setrole }) {
 
   return (
     <>
-      <header className="  w-full bg-gradient-to-r  shadow-sm flex justify-center z-50 ">
+      <header className="  w-full bg-[white] h-[80px] fixed top-0  shadow-sm flex justify-center z-50 ">
         <div className=" w-[1340px] px-2 py-4 flex justify-between items-center ">
           <h1 className="text-black text-2xl font-bold tracking-wide">
             My<span className="text-yellow-300">Store</span>

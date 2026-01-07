@@ -5,10 +5,10 @@ function Addproducts() {
   const [productName, setProductName] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
-  const [about, setAbout] = useState(""); // ✅ new state
+  const [about, setAbout] = useState(""); 
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
-  const [gallery, setGallery] = useState([]); // ✅ new state
+  const [gallery, setGallery] = useState([]); 
   const [categories, setCategories] = useState([]);
   const [message, setMessage] = useState("");
   const [products, setproducts] = useState([]);
@@ -58,10 +58,10 @@ function Addproducts() {
     formData.append("title", productName);
     formData.append("category", category);
     formData.append("description", description);
-    formData.append("about", about); // ✅ new field
+    formData.append("about", about); 
     formData.append("price", price);
     formData.append("image", image);
-    gallery.forEach((file) => formData.append("gallery", file)); // ✅ new field
+    gallery.forEach((file) => formData.append("gallery", file)); 
 
     try {
       if (

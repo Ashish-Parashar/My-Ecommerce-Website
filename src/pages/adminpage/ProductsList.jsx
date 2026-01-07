@@ -5,17 +5,41 @@ import Addproducts from './addproducts';
 function ProductsList() {
     const [products, setproducts] = useState([])
     const [newName, setnewName] = useState('')
+    const [newDes, setnewDes] = useState('')
+    const [newAbout, setnewAbout] = useState('')
+    const [newprice, setnewprice] = useState('')
     const [EditProduct, setEditProduct] = useState(null)
     const [searchProduct, setsearchProduct] = useState('')
     const [currentPage, setcurrentPage] = useState(1)
     const [productsperpage] = useState(5)
     const [showConfirm, setshowConfirm] = useState(false)
 
+
     const [Productcategory, setProductcategory] = useState('All')
+    const [Editcategory, setEditcategory] = useState([]);
+    const [newcategory, setNewcategory] = useState('');
 
 
     const ProductsUrl = 'https://backend-jvcj.onrender.com/api/products';
+    const categoryUrl = 'https://backend-jvcj.onrender.com/api/categories';
+
+
     const token = localStorage.getItem('token');
+
+    useEffect(() => {
+        const getCategory = async () => {
+            try {
+                const res = await fetch(categoryUrl);
+                const data = await res.json();
+                setEditcategory(data);
+                console.log(data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        getCategory();
+    }, []);
 
     const getData = async () => {
         try {
@@ -42,12 +66,21 @@ function ProductsList() {
                     'content-type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify({ title: newName })
+                body: JSON.stringify({
+                    title: newName,
+                    description: newDes,
+                    about: newAbout,
+                    price: newprice,
+                    category:newcategory
+                })
             })
 
             const result = await res.json()
             alert(result.message || "Product updated!");
             setnewName('')
+            setnewDes('')
+            setnewAbout('')
+            setnewprice('')
             setEditProduct(null)
             getData()
         }
@@ -146,15 +179,7 @@ function ProductsList() {
                                         className='w-[50px] h-[50px]'
                                         src={`https://backend-jvcj.onrender.com${product.image}`} alt="" />
                                 </td>
-                                <td className="py-2 text-[14px]  text-wrap px-4 border-b ">{EditProduct === product._id ?
-                                    <input type="text"
-                                        value={newName}
-                                        onChange={(e) => {
-                                            setnewName(e.target.value)
-                                        }}
-                                        className="border p-1 rounded w-full"
-                                    />
-                                    : product.title}</td>
+                                <td className="py-2 text-[14px]  text-wrap px-4 border-b ">{product.title}</td>
                                 <td className="py-2 px-4 border-b">{product.category.name}</td>
                                 <td className="py-2 px-4 border-b">{product.price}</td>
                                 <td className="py-2 px-4 border-b">{EditProduct !== product._id ?
@@ -162,6 +187,10 @@ function ProductsList() {
                                         <button onClick={() => {
                                             setEditProduct(product._id)
                                             setnewName(product.title)
+                                            setnewDes(product.description)
+                                            setnewAbout(product.about)
+                                            setnewprice(product.price)
+                                            setNewcategory(product.category)
                                         }}
                                             className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
                                         >
@@ -192,6 +221,125 @@ function ProductsList() {
                                         >cancel</button>
                                     </>
                                 }</td>
+                                {EditProduct === product._id && (
+                                    <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+
+                                        <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-2xl space-y-6 border border-gray-200">
+
+                                            <h2 className="text-2xl font-semibold text-gray-800 text-center">
+                                                Edit Product Details
+                                            </h2>
+
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                                                {/* Product Name */}
+                                                <div>
+                                                    <label className="block text-gray-700 font-medium mb-2">
+                                                        Product Name
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        value={newName}
+                                                        onChange={(e) => {
+                                                            setnewName(e.target.value)
+                                                        }}
+                                                        placeholder="Enter product name"
+                                                        className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
+                                                    />
+                                                </div>
+
+                                                {/* Category */}
+                                                <div>
+                                                    <label className="block text-gray-700 font-medium mb-2">Category</label>
+                                                    <select
+                                                        value={newcategory}
+                                                        onChange={(e) => setNewcategory(e.target.value)}
+                                                        className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
+                                                    >
+                                                        <option value="">Select Category</option>
+                                                        {Editcategory.map((item) => (
+                                                            <option key={item._id} value={item._id}>
+                                                                {item.name}
+                                                            </option>
+                                                        ))}
+                                                    </select>
+                                                </div>
+
+                                                {/* Description */}
+                                                <div className="sm:col-span-2">
+                                                    <label className="block text-gray-700 font-medium mb-2">
+                                                        Description
+                                                    </label>
+                                                    <textarea
+                                                        rows="2"
+                                                        value={newDes}
+                                                        onChange={(e) => {
+                                                            setnewDes(e.target.value)
+                                                        }}
+                                                        placeholder="Enter product description"
+                                                        className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
+                                                    />
+                                                </div>
+
+                                                {/* About */}
+                                                <div className="sm:col-span-2">
+                                                    <label className="block text-gray-700 font-medium mb-2">
+                                                        About this item
+                                                    </label>
+                                                    <textarea
+                                                        rows="2"
+                                                        value={newAbout}
+                                                        onChange={(e) => {
+                                                            setnewAbout(e.target.value)
+                                                        }}
+                                                        placeholder="Enter about this product"
+                                                        className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
+                                                    />
+                                                </div>
+
+                                                {/* Price */}
+                                                <div>
+                                                    <label className="block text-gray-700 font-medium mb-2">
+                                                        Price ($)
+                                                    </label>
+                                                    <input
+                                                        value={newprice}
+                                                        onChange={(e) => {
+                                                            setnewprice(e.target.value)
+                                                        }}
+                                                        type="number"
+                                                        placeholder="Enter price"
+                                                        className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
+                                                    />
+                                                </div>
+
+                                            </div>
+
+                                            {/* Buttons */}
+                                            <div className="pt-4 flex justify-center gap-4 flex-wrap">
+                                                <button
+                                                    className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold px-8 py-3 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition"
+                                                    onClick={() => {
+                                                        updateProduct(product._id)
+                                                    }}
+                                                >
+                                                    Update Product
+                                                </button>
+
+                                                <button
+                                                    className="bg-gray-200 text-gray-700 font-semibold px-8 py-3 rounded-xl shadow-md hover:bg-gray-300 hover:scale-105 transition"
+                                                    onClick={() => {
+                                                        setEditProduct(null)
+                                                    }}
+                                                >
+                                                    Cancel
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                )}
+
                                 <div className=' '>
                                     {showConfirm &&
                                         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
