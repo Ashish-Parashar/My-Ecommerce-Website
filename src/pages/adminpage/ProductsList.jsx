@@ -172,7 +172,7 @@ function ProductsList() {
                     <tbody>
                         {currentProducts.map((product, index) => (
 
-                            <tr key={index} className="hover:bg-gray-50">
+                            <tr key={product._id} className="hover:bg-gray-50">
                                 <td className="py-2 px-4 border-b">{indexOfFirstProduct + index + 1}</td>
                                 <td className="py-2 px-4 border-b">
                                     <img
@@ -200,7 +200,6 @@ function ProductsList() {
                                             onClick={() => {
                                                 // deleteProduct(product._id)
                                                 setshowConfirm(true)
-
                                             }}
                                             className="bg-red-500 text-white px-3 py-1 rounded ml-2 hover:bg-red-600 transition"
                                         >Delete</button>
